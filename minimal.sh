@@ -8,21 +8,23 @@
 set -eu -o pipefail
 
 # Print welcome message.
-echo "This script configures termux and installs a minimal XFCE based development environment."
-echo "A full list of installed packages can be found within the Github repository."
+echo """This script configures termux and installs a minimal XFCE based development environment. 
+A full list of installed packages can be found within the Github repository."""
+
+# Setup storage permissions.
+echo """Setting up required storage permissions.
+Please grant termux storage permissions."""
+sleep 2
+termux-setup-storage
+
+# Setup mirrors.
+echo "Please select/configure your default mirrors."
+sleep 2
+termux-change-repo
 
 # Update and upgrade termux
 echo "Updating packages."
 pkg update -y && pkg upgrade -y
-
-# Setup mirrors.
-echo "Please select/configure your mirrors."
-termux-change-repo
-
-# Setup storage permissions.
-echo "Creating user directories and setting up storage permissions."
-echo "Please grant termux storage permissions."
-termux-setup-storage
 
 # Create and link user directories.
 mkdir $HOME/Desktop 
@@ -43,12 +45,12 @@ pkg install -y x11-repo
 
 # Install required dependencies
 echo "Installing minimal set of packages."
-pkg install -y binutils build-essential curl firefox git htop micro python python-tkinter tigervnc wget xclip xfce4 xfce4-terminal
+pkg install -y binutils build-essential curl firefox git htop micro python python-tkinter tigervnc xclip xfce4 xfce4-terminal
 
 # Configuring VNC server.
-echo "Configuring VNC server."
-echo "When prompted please provide a VNC password."
-echo "Note that passwords are not visible when you are typing them and maximum password length is 8 characters."
+echo """Configuring VNC server.
+When prompted please provide a VNC password. Note that passwords are not visible when you are typing them and maximum password length is 8 characters."""
+sleep 2
 vncserver -localhost
 echo "xfce4-session &" > $HOME/.vnc/xstartup
 echo "geometry=1920x1080" >> $HOME/.vnc/config
@@ -63,7 +65,8 @@ micro -plugin install autofmt detectindent filemanager manipulator quoter snippe
 sed -i '/config.RegisterCommonOption("filemanager", "openonstart", false)/c\config.RegisterCommonOption("filemanager", "openonstart", true)' $HOME/.config/micro/plug/filemanager/filemanager.lua
 
 # Confirm successful installation and exit.
-echo "Installation complete."
-echo 'To start the VNC server enter "vncserver".'
-echo 'To stop the VNC server enter "vncserver -kill :1".'
+echo '''Minimal installation complete.
+To start the VNC server enter "vncserver".
+To stop the VNC server enter "vncserver -kill :1".'''
+sleep 2
 exit
