@@ -45,7 +45,7 @@ pkg install -y x11-repo
 
 # Install required dependencies
 echo "Installing minimal set of packages."
-pkg install -y binutils build-essential curl firefox git htop micro python python-tkinter tigervnc xclip xfce4 xfce4-terminal
+pkg install -y binutils build-essential curl firefox git htop micro openssh python python-tkinter tigervnc xclip xfce4 xfce4-terminal
 
 # Configuring VNC server.
 echo """Configuring VNC server.
