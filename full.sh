@@ -8,7 +8,7 @@
 set -eu -o pipefail
 
 # Download minimal install script.
-wget https://github.com/hreikin/termux-dev-setups/minimal.sh
+wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/minimal.sh?token=GHSAT0AAAAAAB46CJR7ZI64PDX7ALYUDWSIY5R7BPQ
 chmod +x minimal.sh
 source minimal.sh
 
