@@ -15,7 +15,7 @@ source minimal.sh
 # Print welcome message and install extra packages.
 echo """Full installation starting.
 Installing extra packages."""
-pkg install -y 
+pkg install -y geany geany-plugins
 
 # Confirm successful installation and exit.
 echo '''Full installation complete.
