@@ -8,7 +8,7 @@
 set -eu -o pipefail
 
 # Download minimal install script.
-wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/minimal.sh?token=GHSAT0AAAAAAB46CJR7ZI64PDX7ALYUDWSIY5R7BPQ
+wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/minimal.sh
 chmod +x minimal.sh
 source minimal.sh
 
@@ -22,4 +22,3 @@ echo '''Full installation complete.
 To start the VNC server enter "vncserver".
 To stop the VNC server enter "vncserver -kill :1".'''
 sleep 2
-exit
