@@ -14,12 +14,10 @@ A full list of installed packages can be found within the Github repository."""
 # Setup storage permissions.
 echo """Setting up required storage permissions.
 Please grant termux storage permissions."""
-sleep 2
 termux-setup-storage
 
 # Setup mirrors.
 echo "Please select/configure your default mirrors."
-sleep 2
 termux-change-repo
 
 # Update and upgrade termux
@@ -68,5 +66,3 @@ sed -i '/config.RegisterCommonOption("filemanager", "openonstart", false)/c\conf
 echo '''Minimal installation complete.
 To start the VNC server enter "vncserver".
 To stop the VNC server enter "vncserver -kill :1".'''
-sleep 2
-exit
