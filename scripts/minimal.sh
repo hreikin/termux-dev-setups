@@ -24,7 +24,3 @@ micro -plugin install autofmt detectindent filemanager manipulator quoter snippe
 
 # Set filemanager plugin to show by default.
 sed -i '/config.RegisterCommonOption("filemanager", "openonstart", false)/c\config.RegisterCommonOption("filemanager", "openonstart", true)' $HOME/.config/micro/plug/filemanager/filemanager.lua
-
-# Autostart code-server when termux is launched.
-echo "Configuring code-server to run when termux is launched."
-echo "code-server > code-server.log 2>&1 &" >> $HOME/.bashrc
