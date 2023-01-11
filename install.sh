@@ -36,7 +36,22 @@ case $CHOICE in
             wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/minimal.sh
             chmod +x minimal.sh
             source minimal.sh
-            echo "Minimal installation is now complete."
+            clear
+            echo """Minimal installation is now complete.
+            
+            
+            Code Server Instructions
+            To start code-server use the following command:
+            
+            code-server
+            
+            Then open a browser and go to the following address:
+            
+            https//127.0.0.1:8080
+            
+            The password used to access code-server in the browser can be configured using the config.yaml file available at:
+            
+            ~/.config/code-server/config.yaml"""
             ;;
         2)
             clear
@@ -45,6 +60,21 @@ case $CHOICE in
             wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/desktop.sh
             chmod +x desktop.sh
             source desktop.sh
-            echo "Desktop installation is now complete."
+            clear
+            echo """Desktop installation is now complete. To view the installed desktop you will need to use a VNC viewer installed on Android.
+
+
+            VNC Instructions
+            To start the VNC server use the following command:
+            
+            vncserver
+            
+            To view running VNC servers use the following command:
+            
+            vncserver -list
+            
+            To stop a VNC server running on display 1 use the following command:
+            
+            vncserver -kill :1"""
             ;;
 esac
