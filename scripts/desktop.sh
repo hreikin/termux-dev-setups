@@ -28,5 +28,5 @@ sleep 2
 vncserver -localhost
 echo "xfce4-session &" > $HOME/.vnc/xstartup
 echo "geometry=1920x1080" >> $HOME/.vnc/config
-echo "export DISPLAY=":1"" >> $HOME/.bashrc
+echo "export DISPLAY=\":1\"" >> $HOME/.bashrc
 vncserver -kill :1
