@@ -14,6 +14,7 @@ source base.sh
 
 # Enable the tur-repository.
 pkg install -y tur-repo
+pkg update -y && pkg upgrade -y
 
 # Install minimal set of packages.
 pkg install -y micro code-server
