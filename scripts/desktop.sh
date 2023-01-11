@@ -8,18 +8,18 @@
 set -eu -o pipefail
 
 # Download minimal install script.
-wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/minimal.sh
-chmod +x minimal.sh
-source minimal.sh
+wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/base.sh
+chmod +x base.sh
+source base.sh
 
 
 # Enable X11 repository.
-echo "Enabling X11 repository."
-pkg install -y x11-repo
+echo "Enabling X11 and TUR repositories."
+pkg install -y x11-repo tur-repo
 
 # Install required dependencies
-echo "Installing minimal set of packages."
-pkg install -y binutils build-essential code-oss firefox leafpad python python-tkinter tigervnc xclip xfce4 xfce4-terminal
+echo "Installing XFCE desktop and basic packages."
+pkg install -y code-oss firefox leafpad python python-tkinter tigervnc xclip xfce4 xfce4-terminal
 
 # Configuring VNC server.
 echo """Configuring VNC server.

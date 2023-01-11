@@ -16,7 +16,7 @@ source base.sh
 pkg install -y tur-repo
 
 # Install minimal set of packages.
-pkg install -y curl git htop micro openssh code-server
+pkg install -y micro code-server
 
 # Configuring Micro code editor and installing plugins.
 echo "Configuring Micro code editor and installing plugins."

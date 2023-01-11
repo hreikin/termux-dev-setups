@@ -19,9 +19,9 @@ sleep 2
 termux-change-repo
 
 # Update and upgrade termux, install termux-api package.
-echo "Updating packages and installing termux-api."
+echo "Updating and installing base packages."
 pkg update -y && pkg upgrade -y
-pkg install -y termux-api
+pkg install -y binutils build-essential curl git htop openssh termux-api
 
 # Create and link user directories.
 mkdir $HOME/Desktop 
