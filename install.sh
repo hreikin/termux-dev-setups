@@ -38,21 +38,24 @@ case $CHOICE in
             source minimal.sh
             source $HOME/.bashrc
             clear
-            echo """Minimal installation is now complete.
+            echo """
+            Minimal installation is now complete.
             
             
             Code Server Instructions
             To start code-server use the following command:
             
-            code-server
+            code-server &
             
-            Then open a browser and go to the following address:
-            
-            https//127.0.0.1:8080
-            
-            The password used to access code-server in the browser can be configured using the config.yaml file available at:
+            This will run code-server in the background and generate a default config.yaml file on first run. 
+            The password used to access code-server in the browser can be found using the config.yaml file 
+            available at:
             
             ~/.config/code-server/config.yaml
+
+            Next open a browser and go to the following address:
+            
+            https//127.0.0.1:8080
             
             Please quit Termux using the 'exit' command and then restart the app."""
             ;;
@@ -65,7 +68,9 @@ case $CHOICE in
             source desktop.sh
             source $HOME/.bashrc
             clear
-            echo """Desktop installation is now complete. To view the installed desktop you will need to use a VNC viewer installed on Android.
+            echo """
+            Desktop installation is now complete. To view the installed desktop you will need to use a VNC 
+            viewer installed on Android.
 
 
             VNC Instructions
