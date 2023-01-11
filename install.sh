@@ -53,10 +53,6 @@ case $CHOICE in
             The password used to access code-server in the browser can be configured using the config.yaml file available at:
             
             ~/.config/code-server/config.yaml
-
-            A log file of the installation is available at:
-
-            ~/tds-install.log
             
             Please quit Termux using the 'exit' command and then restart the app."""
             ;;
@@ -84,10 +80,6 @@ case $CHOICE in
             To stop a VNC server running on display 1 use the following command:
             
             vncserver -kill :1
-
-            A log file of the installation is available at:
-
-            ~/tds-install.log
             
             Please quit Termux using the 'exit' command and then restart the app."""
             ;;
