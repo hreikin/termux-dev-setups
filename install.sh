@@ -3,7 +3,7 @@
 ## Author  : Michael Haslam
 ## Mail    : hreikin@gmail.com
 ## License : MIT
-{
+
 # Fail on error and report it, debug all lines.
 set -eu -o pipefail
 
@@ -84,4 +84,3 @@ case $CHOICE in
             Please quit Termux using the 'exit' command and then restart the app."""
             ;;
 esac
-} > tds-install.log
