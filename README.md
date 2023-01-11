@@ -6,6 +6,7 @@ An easy to use script for installation of a simple developer setup in termux.
 - Android 7+ phone
 - VNC Client
 - Termux installed from F-Droid - NOTE: Termux from Google Play is unmaintained due to API requirements, please use F-Droid instead.
+- TermuxAPI installed from F-Droid
 
 ## Installation
 To start the installation follow the steps below.
