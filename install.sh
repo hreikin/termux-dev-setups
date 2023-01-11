@@ -36,6 +36,7 @@ case $CHOICE in
             wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/minimal.sh
             chmod +x minimal.sh
             source minimal.sh
+            source $HOME/.bashrc
             clear
             echo """Minimal installation is now complete.
             
@@ -51,7 +52,9 @@ case $CHOICE in
             
             The password used to access code-server in the browser can be configured using the config.yaml file available at:
             
-            ~/.config/code-server/config.yaml"""
+            ~/.config/code-server/config.yaml
+            
+            Please quit Termux using the 'exit' command and then restart the app."""
             ;;
         2)
             clear
@@ -60,6 +63,7 @@ case $CHOICE in
             wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/desktop.sh
             chmod +x desktop.sh
             source desktop.sh
+            source $HOME/.bashrc
             clear
             echo """Desktop installation is now complete. To view the installed desktop you will need to use a VNC viewer installed on Android.
 
@@ -75,6 +79,8 @@ case $CHOICE in
             
             To stop a VNC server running on display 1 use the following command:
             
-            vncserver -kill :1"""
+            vncserver -kill :1
+            
+            Please quit Termux using the 'exit' command and then restart the app."""
             ;;
 esac
