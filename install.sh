@@ -137,9 +137,10 @@ Desktop installation is now complete. To view the installed desktop you will nee
 client installed on Android.
 
 Xserver Instructions
-To start the XFCE desktop run the following command:
+To start the XFCE desktop run one of the following commands:
 
-xfce-session &
+startxfce4 &
+xfce4-session &
 
 Then open your Xserver app on Android to view the desktop.
 
