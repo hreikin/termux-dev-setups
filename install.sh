@@ -67,6 +67,12 @@ config_desktop () {
     # Install required dependencies
     echo "Installing XFCE desktop and basic packages."
     pkg install -y code-oss firefox leafpad python python-tkinter tigervnc xclip xfce4 xfce4-terminal
+}
+
+config_vnc () {
+    # Update and install tigervnc.
+    pkg update -y && pkg upgrade -y
+    pkg install tigervnc
 
     # Configuring VNC server.
     echo "Configuring VNC server."
@@ -74,6 +80,7 @@ config_desktop () {
     vncserver -localhost
     echo "xfce4-session &" > $HOME/.vnc/xstartup
     echo "geometry=1920x1080" >> $HOME/.vnc/config
+    echo "# VNC display variable." >> $HOME/.bashrc
     echo "export DISPLAY=\":1\"" >> $HOME/.bashrc
     vncserver -kill :1
 }
@@ -129,7 +136,7 @@ TITLE="Installation"
 MENU="Please choose one of the following options:"
 
 OPTIONS=(1 "Minimal"
-         2 "Desktop")
+         2 "Desktop (VNC)")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
