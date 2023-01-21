@@ -93,7 +93,7 @@ config_xserver () {
 }
 
 # Minimal and desktop installation completed messages.
-MINIMAL_MSG = """
+MINIMAL_MSG="
 Minimal installation is now complete.
 
 Code Server Instructions
@@ -112,8 +112,8 @@ Next open a browser and go to the following address:
 https//127.0.0.1:8080
 
 Please quit Termux using the 'exit' command and then restart the app.
-"""
-DESKTOP_VNC_MSG = """
+"
+DESKTOP_VNC_MSG="
 Desktop installation is now complete. To view the installed desktop you will need to use a VNC
 viewer installed on Android.
 
@@ -131,8 +131,8 @@ To stop a VNC server running on display 1 use the following command:
 vncserver -kill :1
 
 Please quit Termux using the 'exit' command and then restart the app.
-"""
-DESKTOP_XSERVER_MSG = """
+"
+DESKTOP_XSERVER_MSG="
 Desktop installation is now complete. To view the installed desktop you will need to use an Xserver
 client installed on Android.
 
@@ -144,7 +144,7 @@ xfce-session &
 Then open your Xserver app on Android to view the desktop.
 
 Please quit Termux using the 'exit' command and then restart the app.
-"""
+"
 
 # Create dialog menu for option selection.
 TERMINAL=$(tty)
@@ -176,7 +176,7 @@ case $CHOICE in
             config_minimal
             source $HOME/.bashrc
             clear
-            echo $MINIMAL_MSG
+            echo "$MINIMAL_MSG"
             ;;
         2)
             clear
@@ -187,7 +187,7 @@ case $CHOICE in
             config_vnc
             source $HOME/.bashrc
             clear
-            echo $DESKTOP_VNC_MSG
+            echo "$DESKTOP_VNC_MSG"
             ;;
         3)
             clear
@@ -198,6 +198,6 @@ case $CHOICE in
             config_xserver
             source $HOME/.bashrc
             clear
-            echo $DESKTOP_XSERVER_MSG
+            echo "$DESKTOP_XSERVER_MSG"
             ;;
 esac
