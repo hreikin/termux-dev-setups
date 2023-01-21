@@ -72,7 +72,7 @@ config_desktop () {
 config_vnc () {
     # Update and install tigervnc.
     pkg update -y && pkg upgrade -y
-    pkg install tigervnc
+    pkg install -y tigervnc
 
     # Configuring VNC server.
     echo "Configuring VNC server."
