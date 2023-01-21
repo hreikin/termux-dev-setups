@@ -13,7 +13,8 @@ config_git_user () {
     echo
     echo -e "git config --global user.name \"Example Name\""
     echo
-    echo "Please enter your git user.name"
+    read -p "Please enter your git user.name: " USER_NAME
+    git config --global user.name "$USER_NAME"
 }
 
 config_git_email () {
@@ -22,7 +23,8 @@ config_git_email () {
     echo
     echo -e "git config --global user.email \"example@example.com\""
     echo
-    echo "Please enter your git user.email"
+    read -p "Please enter your git user.email: " USER_EMAIL
+    git config --global user.email "$USER_EMAIL"
 }
 
 generate_ssh_key () {
