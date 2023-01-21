@@ -66,7 +66,7 @@ config_desktop () {
 
     # Install required dependencies
     echo "Installing XFCE desktop and basic packages."
-    pkg install -y code-oss firefox leafpad python python-tkinter tigervnc xclip xfce4 xfce4-terminal
+    pkg install -y code-oss firefox leafpad python python-tkinter xclip xfce4 xfce4-terminal
 }
 
 config_vnc () {
@@ -78,11 +78,18 @@ config_vnc () {
     echo "Configuring VNC server."
     echo "When prompted please provide a VNC password. Note that passwords are not visible when you are typing them and maximum password length is 8 characters."
     vncserver -localhost
-    echo "xfce4-session &" > $HOME/.vnc/xstartup
+    echo "#!/data/data/com.termux/files/usr/bin/sh" > $HOME/.vnc/xstartup
+    echo "xfce4-session &" >> $HOME/.vnc/xstartup
     echo "geometry=1920x1080" >> $HOME/.vnc/config
     echo "# VNC display variable." >> $HOME/.bashrc
     echo "export DISPLAY=\":1\"" >> $HOME/.bashrc
     vncserver -kill :1
+}
+
+config_xserver () {
+    echo "Configuring Xserver."
+    echo "# Xserver display variable." >> $HOME/.bashrc
+    echo "export DISPLAY=localhost:0" >> $HOME/.bashrc
 }
 
 # Minimal and desktop installation completed messages.
@@ -106,7 +113,7 @@ https//127.0.0.1:8080
 
 Please quit Termux using the 'exit' command and then restart the app.
 """
-DESKTOP_MSG = """
+DESKTOP_VNC_MSG = """
 Desktop installation is now complete. To view the installed desktop you will need to use a VNC
 viewer installed on Android.
 
@@ -125,6 +132,19 @@ vncserver -kill :1
 
 Please quit Termux using the 'exit' command and then restart the app.
 """
+DESKTOP_XSERVER_MSG = """
+Desktop installation is now complete. To view the installed desktop you will need to use an Xserver
+client installed on Android.
+
+Xserver Instructions
+To start the XFCE desktop run the following command:
+
+xfce-session &
+
+Then open your Xserver app on Android to view the desktop.
+
+Please quit Termux using the 'exit' command and then restart the app.
+"""
 
 # Create dialog menu for option selection.
 TERMINAL=$(tty)
@@ -136,7 +156,8 @@ TITLE="Installation"
 MENU="Please choose one of the following options:"
 
 OPTIONS=(1 "Minimal"
-         2 "Desktop (VNC)")
+         2 "Desktop (VNC)"
+         3 "Desktop (Xserver)")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -150,7 +171,7 @@ clear
 case $CHOICE in
         1)
             clear
-            echo "Starting minimal installation."
+            echo "Starting \"Minimal\" installation."
             config_base
             config_minimal
             source $HOME/.bashrc
@@ -159,13 +180,24 @@ case $CHOICE in
             ;;
         2)
             clear
-            echo "Starting desktop installation."
+            echo "Starting \"Desktop (VNC)\" installation."
             config_base
             config_minimal
             config_desktop
             config_vnc
             source $HOME/.bashrc
             clear
-            echo $DESKTOP_MSG
+            echo $DESKTOP_VNC_MSG
+            ;;
+        3)
+            clear
+            echo "Starting \"Desktop (Xserver)\" installation."
+            config_base
+            config_minimal
+            config_desktop
+            config_xserver
+            source $HOME/.bashrc
+            clear
+            echo $DESKTOP_XSERVER_MSG
             ;;
 esac
