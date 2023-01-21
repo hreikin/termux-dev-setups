@@ -78,8 +78,46 @@ config_desktop () {
     vncserver -kill :1
 }
 
+# Minimal and desktop installation completed messages.
+MINIMAL_MSG = """
+Minimal installation is now complete.
 
+Code Server Instructions
+To start code-server use the following command:
 
+code-server &
+
+This will run code-server in the background and generate a default config.yaml file on first run.
+The password used to access code-server in the browser can be found using the config.yaml file
+available at:
+
+~/.config/code-server/config.yaml
+
+Next open a browser and go to the following address:
+
+https//127.0.0.1:8080
+
+Please quit Termux using the 'exit' command and then restart the app.
+"""
+DESKTOP_MSG = """
+Desktop installation is now complete. To view the installed desktop you will need to use a VNC
+viewer installed on Android.
+
+VNC Instructions
+To start the VNC server use the following command:
+
+vncserver
+
+To view running VNC servers use the following command:
+
+vncserver -list
+
+To stop a VNC server running on display 1 use the following command:
+
+vncserver -kill :1
+
+Please quit Termux using the 'exit' command and then restart the app.
+"""
 
 # Create dialog menu for option selection.
 TERMINAL=$(tty)
@@ -110,26 +148,7 @@ case $CHOICE in
             config_minimal
             source $HOME/.bashrc
             clear
-            echo """
-            Minimal installation is now complete.
-
-
-            Code Server Instructions
-            To start code-server use the following command:
-
-            code-server &
-
-            This will run code-server in the background and generate a default config.yaml file on first run.
-            The password used to access code-server in the browser can be found using the config.yaml file
-            available at:
-
-            ~/.config/code-server/config.yaml
-
-            Next open a browser and go to the following address:
-
-            https//127.0.0.1:8080
-
-            Please quit Termux using the 'exit' command and then restart the app."""
+            echo $MINIMAL_MSG
             ;;
         2)
             clear
@@ -139,24 +158,6 @@ case $CHOICE in
             config_desktop
             source $HOME/.bashrc
             clear
-            echo """
-            Desktop installation is now complete. To view the installed desktop you will need to use a VNC
-            viewer installed on Android.
-
-
-            VNC Instructions
-            To start the VNC server use the following command:
-
-            vncserver
-
-            To view running VNC servers use the following command:
-
-            vncserver -list
-
-            To stop a VNC server running on display 1 use the following command:
-
-            vncserver -kill :1
-
-            Please quit Termux using the 'exit' command and then restart the app."""
+            echo $DESKTOP_MSG
             ;;
 esac
