@@ -29,7 +29,7 @@ config_git_email () {
 
 generate_ssh_key () {
     echo
-    echo "This step generates an SSH key nd adds it to the SSH agent with the following commands:"
+    echo "This step generates an SSH key and adds it to the SSH agent with the following commands:"
     echo
     echo -e "ssh-keygen -t ed25519 -C \"example@example.com\""
     echo -e "eval \"\$(ssh-agent -s)\""
