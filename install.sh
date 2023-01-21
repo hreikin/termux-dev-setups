@@ -60,8 +60,8 @@ config_minimal () {
 
 config_desktop () {
     # Enable X11 repository.
-    echo "Enabling X11 and TUR repositories."
-    pkg install -y x11-repo tur-repo
+    echo "Enabling X11 repository."
+    pkg install -y x11-repo
     pkg update -y && pkg upgrade -y
 
     # Install required dependencies
