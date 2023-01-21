@@ -22,7 +22,7 @@ config_base () {
     # Update and upgrade termux, install termux-api package.
     echo "Updating and installing base packages."
     pkg update -y && pkg upgrade -y
-    pkg install -y binutils build-essential curl git htop ncurses-utils openssh termux-api
+    pkg install -y binutils build-essential curl git htop nano ncurses-utils openssh termux-api
 
     # Create and link user directories.
     mkdir $HOME/Desktop
