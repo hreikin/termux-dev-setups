@@ -111,6 +111,10 @@ Next open a browser and go to the following address:
 
 https//127.0.0.1:8080
 
+Detailed usage instructions can be found at the following github repository:
+
+https://githb.com/hreikin/termux-dev-setups
+
 Please quit Termux using the 'exit' command and then restart the app.
 "
 DESKTOP_VNC_MSG="
@@ -130,6 +134,10 @@ To stop a VNC server running on display 1 use the following command:
 
 vncserver -kill :1
 
+Detailed usage instructions can be found at the following github repository:
+
+https://githb.com/hreikin/termux-dev-setups
+
 Please quit Termux using the 'exit' command and then restart the app.
 "
 DESKTOP_XSERVER_MSG="
@@ -148,6 +156,10 @@ You can also launch single applications such as code-oss or firefox like so:
 
 xfwm4 & code-oss
 xfwm4 & firefox
+
+Detailed usage instructions can be found at the following github repository:
+
+https://githb.com/hreikin/termux-dev-setups
 
 Please quit Termux using the 'exit' command and then restart the app.
 "
