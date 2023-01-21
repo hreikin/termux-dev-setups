@@ -163,6 +163,7 @@ case $CHOICE in
             config_base
             config_minimal
             config_desktop
+            config_vnc
             source $HOME/.bashrc
             clear
             echo $DESKTOP_MSG
