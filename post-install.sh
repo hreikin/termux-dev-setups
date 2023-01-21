@@ -34,6 +34,9 @@ generate_ssh_key () {
     echo -e "ssh-keygen -t ed25519 -C \"example@example.com\""
     echo -e "eval \"\$(ssh-agent -s)\""
     echo -e "ssh-add ~/.ssh/id_ed25519"
+    ssh-keygen -t ed25519 -C "$USER_EMAIL"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
 }
 
 # Change to $HOME directory before starting.
