@@ -9,8 +9,8 @@ set -eu -o pipefail
 
 config_base () {
     # Setup storage permissions.
-    echo """Setting up required storage permissions.
-    Please grant termux storage permissions."""
+    echo "Setting up required storage permissions."
+    echo "Please grant termux storage permissions."
     termux-setup-storage
     sleep 2
 
@@ -69,8 +69,8 @@ config_desktop () {
     pkg install -y code-oss firefox leafpad python python-tkinter tigervnc xclip xfce4 xfce4-terminal
 
     # Configuring VNC server.
-    echo """Configuring VNC server.
-    When prompted please provide a VNC password. Note that passwords are not visible when you are typing them and maximum password length is 8 characters."""
+    echo "Configuring VNC server."
+    echo "When prompted please provide a VNC password. Note that passwords are not visible when you are typing them and maximum password length is 8 characters."
     vncserver -localhost
     echo "xfce4-session &" > $HOME/.vnc/xstartup
     echo "geometry=1920x1080" >> $HOME/.vnc/config
