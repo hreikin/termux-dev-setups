@@ -4,7 +4,7 @@ An easy to use script for installation of a simple developer setup in termux.
 ## Requirements
 - No root permission is required to make this work
 - Android 7+ phone
-- VNC or Xserver client on phone
+- VNC or Xserver client on phone (bVNC or XserverXSDL)
 - Termux installed from F-Droid
 - TermuxAPI installed from F-Droid
 
