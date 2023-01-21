@@ -17,4 +17,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            LICENSE
+            install.sh
+            README.md
+            LICENSE.txt
