@@ -171,7 +171,7 @@ WIDTH=40
 CHOICE_HEIGHT=4
 BACKTITLE="termux-dev-setups"
 TITLE="Installation"
-MENU="Please choose one of the following options:"
+MENU="Please choose one of the following options, use the ARROW keys to navigate and press ENTER to select your option:"
 
 OPTIONS=(1 "Minimal"
          2 "Desktop (VNC)"
