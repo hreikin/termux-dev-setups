@@ -7,6 +7,79 @@
 # Fail on error and report it, debug all lines.
 set -eu -o pipefail
 
+config_base () {
+    # Setup storage permissions.
+    echo """Setting up required storage permissions.
+    Please grant termux storage permissions."""
+    termux-setup-storage
+    sleep 2
+
+    # Setup mirrors.
+    echo "Please select/configure your default mirrors."
+    sleep 2
+    termux-change-repo
+
+    # Update and upgrade termux, install termux-api package.
+    echo "Updating and installing base packages."
+    pkg update -y && pkg upgrade -y
+    pkg install -y binutils build-essential curl git htop ncurses-utils openssh termux-api
+
+    # Create and link user directories.
+    mkdir $HOME/Desktop
+    mkdir $HOME/Downloads
+    mkdir $HOME/Templates
+    mkdir $HOME/Public
+    mkdir $HOME/Documents
+    mkdir $HOME/Pictures
+    mkdir $HOME/Videos
+    mkdir $HOME/Music
+    ln -s $HOME/storage/music/ $HOME/Music
+    ln -s $HOME/storage/downloads/ $HOME/Downloads
+    ln -s $HOME/storage/dcim/ $HOME/Pictures
+
+    # Add custom PS1 to bashrc.
+    echo "export PS1=\"\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]\"" >> $HOME/.bashrc
+}
+
+config_minimal () {
+    # Enable the tur-repository.
+    pkg install -y tur-repo
+    pkg update -y && pkg upgrade -y
+
+    # Install minimal set of packages.
+    pkg install -y micro code-server
+
+    # Configuring Micro code editor and installing plugins.
+    echo "Configuring Micro code editor and installing plugins."
+    micro -plugin install autofmt detectindent filemanager manipulator quoter snippets
+
+    # Set filemanager plugin to show by default.
+    sed -i '/config.RegisterCommonOption("filemanager", "openonstart", false)/c\config.RegisterCommonOption("filemanager", "openonstart", true)' $HOME/.config/micro/plug/filemanager/filemanager.lua
+}
+
+config_desktop () {
+    # Enable X11 repository.
+    echo "Enabling X11 and TUR repositories."
+    pkg install -y x11-repo tur-repo
+    pkg update -y && pkg upgrade -y
+
+    # Install required dependencies
+    echo "Installing XFCE desktop and basic packages."
+    pkg install -y code-oss firefox leafpad python python-tkinter tigervnc xclip xfce4 xfce4-terminal
+
+    # Configuring VNC server.
+    echo """Configuring VNC server.
+    When prompted please provide a VNC password. Note that passwords are not visible when you are typing them and maximum password length is 8 characters."""
+    vncserver -localhost
+    echo "xfce4-session &" > $HOME/.vnc/xstartup
+    echo "geometry=1920x1080" >> $HOME/.vnc/config
+    echo "export DISPLAY=\":1\"" >> $HOME/.bashrc
+    vncserver -kill :1
+}
+
+
+
+
 # Create dialog menu for option selection.
 TERMINAL=$(tty)
 HEIGHT=15
@@ -32,10 +105,8 @@ case $CHOICE in
         1)
             clear
             echo "Starting minimal installation."
-            # Download minimal install script.
-            wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/minimal.sh
-            chmod +x minimal.sh
-            source minimal.sh
+            config_base
+            config_minimal
             source $HOME/.bashrc
             clear
             echo """
@@ -62,10 +133,9 @@ case $CHOICE in
         2)
             clear
             echo "Starting desktop installation."
-            # Download desktop install script.
-            wget https://raw.githubusercontent.com/hreikin/termux-dev-setups/main/scripts/desktop.sh
-            chmod +x desktop.sh
-            source desktop.sh
+            config_base
+            config_minimal
+            config_desktop
             source $HOME/.bashrc
             clear
             echo """
