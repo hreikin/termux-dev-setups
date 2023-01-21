@@ -92,3 +92,19 @@ You can also launch single applications such as code-oss or firefox like so:
 xfwm4 & code-oss
 xfwm4 & firefox
 ```
+
+### Post Installation
+
+The script `post-install.sh` is a small convenience script which handles a few tasks such as:
+
+- Configuring git user.name
+- Configuring git user.email
+- Generate an SSH key and add it to the SSH agent
+
+To use it once you have succesfully installed your developer setup run the following commands:
+
+```
+wget https://raw.githbusercontent.com/hreikin/termux-dev-setups/main/post-install.sh
+chmod +x post-install.sh
+./post-install.sh
+```
