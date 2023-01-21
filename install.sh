@@ -144,6 +144,11 @@ xfce4-session &
 
 Then open your Xserver app on Android to view the desktop.
 
+You can also launch single applications such as code-oss or firefox like so:
+
+xfwm4 & code-oss
+xfwm4 & firefox
+
 Please quit Termux using the 'exit' command and then restart the app.
 "
 
