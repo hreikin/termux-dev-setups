@@ -57,4 +57,5 @@ echo "- Configuring git user.email"
 echo "- Generating a default SSH key"
 config_git_user
 config_git_email
+config_git_editor
 generate_ssh_key
