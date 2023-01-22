@@ -99,6 +99,7 @@ The script `post-install.sh` is a small convenience script which handles a few t
 
 - Configuring git user.name
 - Configuring git user.email
+- Configuring git core.editor to use `nano`
 - Generate an SSH key and add it to the SSH agent
 
 To use it once you have succesfully installed your developer setup run the following commands:
