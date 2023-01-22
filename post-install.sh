@@ -13,7 +13,7 @@ config_git_user () {
     echo
     echo -e "git config --global user.name \"Example Name\""
     echo
-    read -p "Please enter your git user.name: " USER_NAME
+    read -p -r "Please enter your git user.name: " USER_NAME
     git config --global user.name "$USER_NAME"
 }
 
@@ -23,7 +23,7 @@ config_git_email () {
     echo
     echo -e "git config --global user.email \"example@example.com\""
     echo
-    read -p "Please enter your git user.email: " USER_EMAIL
+    read -p -r "Please enter your git user.email: " USER_EMAIL
     git config --global user.email "$USER_EMAIL"
 }
 
@@ -40,7 +40,7 @@ generate_ssh_key () {
 }
 
 # Change to $HOME directory before starting.
-cd $HOME
+cd "$HOME"
 echo "This script takes care of a few common post-installation tasks such as:"
 echo
 echo "- Configuring git user.name"

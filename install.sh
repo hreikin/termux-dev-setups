@@ -25,21 +25,21 @@ config_base () {
     pkg install -y binutils build-essential curl git htop nano ncurses-utils openssh termux-api
 
     # Create and link user directories.
-    mkdir $HOME/Desktop
-    mkdir $HOME/Downloads
-    mkdir $HOME/Templates
-    mkdir $HOME/Public
-    mkdir $HOME/Documents
-    mkdir $HOME/Pictures
-    mkdir $HOME/Videos
-    mkdir $HOME/Music
-    ln -s $HOME/storage/music/ $HOME/Music
-    ln -s $HOME/storage/downloads/ $HOME/Downloads
-    ln -s $HOME/storage/dcim/ $HOME/Pictures
+    mkdir "$HOME"/Desktop
+    mkdir "$HOME"/Downloads
+    mkdir "$HOME"/Templates
+    mkdir "$HOME"/Public
+    mkdir "$HOME"/Documents
+    mkdir "$HOME"/Pictures
+    mkdir "$HOME"/Videos
+    mkdir "$HOME"/Music
+    ln -s "$HOME"/storage/music/ "$HOME"/Music
+    ln -s "$HOME"/storage/downloads/ "$HOME"/Downloads
+    ln -s "$HOME"/storage/dcim/ "$HOME"/Pictures
 
     # Add custom PS1 to bashrc.
-    echo "# Custom PS1 prompt." >> $HOME/.bashrc
-    echo "export PS1=\"\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]\"" >> $HOME/.bashrc
+    echo "# Custom PS1 prompt." >> "$HOME"/.bashrc
+    echo "export PS1=\"\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]\"" >> "$HOME"/.bashrc
 }
 
 config_minimal () {
@@ -55,7 +55,7 @@ config_minimal () {
     micro -plugin install autofmt detectindent filemanager manipulator quoter snippets
 
     # Set filemanager plugin to show by default.
-    sed -i '/config.RegisterCommonOption("filemanager", "openonstart", false)/c\config.RegisterCommonOption("filemanager", "openonstart", true)' $HOME/.config/micro/plug/filemanager/filemanager.lua
+    sed -i '/config.RegisterCommonOption("filemanager", "openonstart", false)/c\config.RegisterCommonOption("filemanager", "openonstart", true)' "$HOME"/.config/micro/plug/filemanager/filemanager.lua
 }
 
 config_desktop () {
@@ -78,18 +78,18 @@ config_vnc () {
     echo "Configuring VNC server."
     echo "When prompted please provide a VNC password. Note that passwords are not visible when you are typing them and maximum password length is 8 characters."
     vncserver -localhost
-    echo "#!/data/data/com.termux/files/usr/bin/sh" > $HOME/.vnc/xstartup
-    echo "xfce4-session &" >> $HOME/.vnc/xstartup
-    echo "geometry=1920x1080" >> $HOME/.vnc/config
-    echo "# VNC display variable." >> $HOME/.bashrc
-    echo "export DISPLAY=\":1\"" >> $HOME/.bashrc
+    echo "#!/data/data/com.termux/files/usr/bin/sh" > "$HOME"/.vnc/xstartup
+    echo "xfce4-session &" >> "$HOME"/.vnc/xstartup
+    echo "geometry=1920x1080" >> "$HOME"/.vnc/config
+    echo "# VNC display variable." >> "$HOME"/.bashrc
+    echo "export DISPLAY=\":1\"" >> "$HOME"/.bashrc
     vncserver -kill :1
 }
 
 config_xserver () {
     echo "Configuring Xserver."
-    echo "# Xserver display variable." >> $HOME/.bashrc
-    echo "export DISPLAY=localhost:0" >> $HOME/.bashrc
+    echo "# Xserver display variable." >> "$HOME"/.bashrc
+    echo "export DISPLAY=localhost:0" >> "$HOME"/.bashrc
 }
 
 # Minimal and desktop installation completed messages.
@@ -183,7 +183,7 @@ CHOICE=$(dialog --clear \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
-                2>&1 >$TERMINAL)
+                2>&1 >"$TERMINAL")
 
 clear
 case $CHOICE in
@@ -192,7 +192,7 @@ case $CHOICE in
             echo "Starting \"Minimal\" installation."
             config_base
             config_minimal
-            source $HOME/.bashrc
+            source "$HOME"/.bashrc
             clear
             echo "$MINIMAL_MSG"
             ;;
@@ -203,7 +203,7 @@ case $CHOICE in
             config_minimal
             config_desktop
             config_vnc
-            source $HOME/.bashrc
+            source "$HOME"/.bashrc
             clear
             echo "$DESKTOP_VNC_MSG"
             ;;
@@ -214,7 +214,7 @@ case $CHOICE in
             config_minimal
             config_desktop
             config_xserver
-            source $HOME/.bashrc
+            source "$HOME"/.bashrc
             clear
             echo "$DESKTOP_XSERVER_MSG"
             ;;
