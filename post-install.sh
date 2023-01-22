@@ -27,6 +27,15 @@ config_git_email () {
     git config --global user.email "$USER_EMAIL"
 }
 
+config_git_editor () {
+    echo
+    echo "This step configures your git core.editor with the following command:"
+    echo
+    echo -e "git config --global core.editor \"nano\""
+    echo
+    git config --global core.editor "nano"
+}
+
 generate_ssh_key () {
     echo
     echo "This step generates an SSH key and adds it to the SSH agent with the following commands:"
